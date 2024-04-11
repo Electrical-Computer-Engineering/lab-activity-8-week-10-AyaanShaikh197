@@ -1,6 +1,16 @@
 #include <stdio.h>
 #define INT_MAX 1000
 
+int str_len(char str[])
+{
+    int i = 0;
+    while(str[i] != '\0')
+    {
+        i++;
+    }
+    return i;
+}
+
 int my_strcmp(char str1[], char str2[])
 {
     int i=0;
@@ -63,23 +73,19 @@ char *my_strcat(char str1[], char str2[])
     return str1;
 }
 
---------------char *my_reverse (char str1[], char str2[])
+char* str_reverse(char str1[], char str2[]) 
 {
-    int i = 0;
-    int str_len = 0;
-
-    while(str2 != '\0')
-    {
-        str_len++;
-    }
-
-    while (str2[i] != '\0')
-    {
-        str1[i] = str2[str_len - i];
-        i++;
-    }
-    str1[i] = '\0';
+    int str1Len = str_len(str1);
+    int str2Len = str_len(str2);
     
+    
+    int i = 0;
+    while (str2Len >= 0) 
+    {
+        str1[str1Len++] = str2[str2Len-- - 1];
+    }
+    
+    str1[str1Len] = '\0';
     return str1;
 }
 
